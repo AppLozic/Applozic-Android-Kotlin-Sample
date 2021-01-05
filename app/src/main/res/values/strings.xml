@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Applozic Kotlin</string>
+    <string name="applozic_title">Applozic</string>
+
+    <!--InitiateDialogFragment -->
+    <string name="start">START</string>
+    <string name="cancel">Cancel</string>
+    <string name="initiate_chat_info">Initiate chat with user</string>
+    <string name="enter_user_id_info">Please Enter UserId</string>
+    <string name="empty_user_id_info">UserId is empty</string>
+
+    <!--Login screen-->
+    <string name="please_wait_info">Please wait…</string>
+    <string name="error_message_for_userId_empty">UserId or password can not be empty</string>
+    <string name="userId_Hint_Text">Enter your userId</string>
+    <string name="password_hint_text">Enter your password</string>
+    <string name="display_name_hint_text">Enter your name</string>
+    <string name="login_button_title">"Login"</string>
+
+    <!--Main screen-->
+    <string name="launch_chat_screen_button_title">Launch chat</string>
+    <string name="launch_chat_with_user_title">Chat with user</string>
+    <string name="logout_title">Logout</string>
+    <string name="rich_messages">List of rich messages</string>
+
+    <!--Rich message screen strings-->
+    <string name="rich_messages_title">Rich messages</string>
+    <string name="rich_message_description">Here are the different types of rich messages you can use in Applozic</string>
+    <string name="rich_message_buttons_textView_title">Rich message Buttons</string>
+    <string name="rich_message_image_textView_title">Rich message Image</string>
+    <string name="rich_message_list_textView_title">Rich message List</string>
+    <string name="rich_message_card_title">Rich message Cards</string>
+    <string name="rich_message_generic_card_button_title">Generic Card</string>
+    <string name="rich_message_list_button_title">List</string>
+    <string name="rich_message_card_carousel_button_title">Card Carousel</string>
+    <string name="rich_message_image_button_title">Image</string>
+    <string name="rich_message_submit_button_title">Submit Button</string>
+    <string name="rich_message_suggested_button_title">Suggested Replies</string>
+    <string name="rich_message_link_button_title">Link button</string>
+
+    <!--Application key-->
+    <string name="application_key">applozic-sample-app</string>
+
+</resources>
