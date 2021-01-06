@@ -44,6 +44,7 @@ To run the sample project
 
 
 ## Integration
+This section will guide you on the integration of Applozic Android SDK in your Kotlin project
 
 ### Add the following in your app level build.gradle dependency:
 
@@ -106,14 +107,14 @@ To disable the location sharing via map add this line ApplozicSetting.getInstanc
           android:theme="@style/ApplozicTheme"
           android:launchMode="singleTask"
           tools:node="replace">
-      <!-- Parent activity meta-data to support API level 7+ -->
+     <!-- Parent activity meta-data to support API level 7+ -->
 <meta-data android:name="android.support.PARENT_ACTIVITY"
            android:value="<APP_PARENT_ACTIVITY>" />
  </activity>
 ```
 Replace `YOUR_APPLOZIC_APP_ID` with applozic app Id and Replace `APP_PARENT_ACTIVITY` with your app's parent activity.
 
-#### Register/Login user account:
+### Register/Login user account:
 
 
 ```kotlin
@@ -145,7 +146,7 @@ Replace `YOUR_APPLOZIC_APP_ID` with applozic app Id and Replace `APP_PARENT_ACTI
 
 If it is a new user, a new user account will get created else the existing user will be logged in to the application.
 
-##### To check if the user is already login to the app
+#### To check if the user is already login to the app
 
 You can check if user is logged in to applozic in your app or not by using below code:
 
@@ -157,7 +158,7 @@ if (Applozic.isConnected(context)) {
 }
 ```
 
-#### Push Notification Setup
+### Push Notification Setup
 
 Setup the push notification for notifying the user about a new chat message
 
@@ -166,7 +167,11 @@ Setup the push notification for notifying the user about a new chat message
 1) If you haven't already added Firebase to your project, add [Firebase to your Android project](https://firebase.google.com/docs/android/setup)
 
 2) Once you're done with the above setup, download the `google-services.json` file from the firebase console,
- Click Settings icon -> Project settings -> Select General tab -> Scroll to the bottom and Select your app -> Click Download google-services.json to obtain your Firebase Android config file
+ Click Settings icon -> Project settings -> Select General tab -> Scroll to the bottom and Select your app -> Click Download google-services.json to obtain your Firebase Android config file.
+ Highlighted red in the following image for going to project settings
+ 
+   ![Project-settings](https://raw.githubusercontent.com/AppLozic/Applozic-Android-Kotlin-Sample/main/images/push-notification/project-settings.png "Project-settings")
+ 
 
 3) Add the Firebase Android configuration(google-services.json) file in the (app-level) directory of your app.
 
@@ -198,6 +203,9 @@ Setup the push notification for notifying the user about a new chat message
 
 2) Once you clicked project settings select `Cloud Messaging tab` under Settings.
    Under Project Credentials, copy your Server Key which is highlighted blue in the following image.
+   
+   ![Fcm-server-key](https://raw.githubusercontent.com/AppLozic/Applozic-Android-Kotlin-Sample/main/images/push-notification/fcm-server-key.png "Fcm-server-key")
+   
 
 **Note:** Make sure you have copied the Server key and not the Legacy key or Sender ID.
 
@@ -206,7 +214,7 @@ Setup the push notification for notifying the user about a new chat message
 Go to [Applozic console](https://console.applozic.com/settings/pushnotification) under Push Notifications -> GCM/FCM key paste your server key and click Save
 
 
-#### Setup PushNotificationTask in Applozic.connect task "onSuccess" by pasting below code (refer login code).
+#### Setup registerForPushNotification in Applozic.connect task "onSuccess" by pasting below code (refer login [code](https://github.com/AppLozic/Applozic-Android-Kotlin-Sample#registerlogin-user-account)).
 
 ```kotlin
 FirebaseInstanceId.getInstance().instanceId
