@@ -33,16 +33,16 @@ class LoginActivity : AppCompatActivity() {
 
             if (TextUtils.isEmpty(userId) || TextUtils.isEmpty(password)) {
                 Toast.makeText(this, R.string.error_message_for_userId_empty, Toast.LENGTH_SHORT)
-                    .show()
+                        .show()
             } else {
                 val dialog = AlertDialogHelper().setProgressDialog(
-                    this,
-                    getString(R.string.please_wait_info)
+                        this,
+                        getString(R.string.please_wait_info)
                 )
                 dialog.show()
                 val user = User()
                 user.userId =
-                    userId //userId it can be any unique user identifier NOTE : +,*,? are not allowed chars in userId.
+                        userId //userId it can be any unique user identifier NOTE : +,*,? are not allowed chars in userId.
                 user.displayName = displayNameEditText.text.toString()
                 user.authenticationTypeId = User.AuthenticationType.APPLOZIC.getValue()
                 user.password = password
@@ -61,8 +61,8 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(
-                registrationResponse: RegistrationResponse?,
-                exception: Exception?
+                    registrationResponse: RegistrationResponse?,
+                    exception: Exception?
             ) {
                 // If any failure in registration the callback  will come here
                 alertDialog.dismiss()
@@ -80,39 +80,39 @@ class LoginActivity : AppCompatActivity() {
     // Get the token from firebase and update in applozic server
     fun registerPushAndLaunchMainActivity() {
         FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w("FCM", "getInstanceId failed:", task.exception)
-                    launchMainActivity()
-                    return@OnCompleteListener
-                }
-                // Get new Instance ID token
-                val token = task.result?.token
-                Log.i("FCM", "Found token :$token")
-                if (token == null) {
-                    Log.i("FCM", "FCM token is null returning")
-                    return@OnCompleteListener
-                }
-                Applozic.registerForPushNotification(
-                    this@LoginActivity,
-                    token,
-                    object : AlPushNotificationHandler {
-                        override fun onSuccess(registrationResponse: RegistrationResponse?) {
-                            launchMainActivity()
-                        }
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Log.w("FCM", "getInstanceId failed:", task.exception)
+                        launchMainActivity()
+                        return@OnCompleteListener
+                    }
+                    // Get new Instance ID token
+                    val token = task.result?.token
+                    Log.i("FCM", "Found token :$token")
+                    if (token == null) {
+                        Log.i("FCM", "FCM token is null returning")
+                        return@OnCompleteListener
+                    }
+                    Applozic.registerForPushNotification(
+                            this@LoginActivity,
+                            token,
+                            object : AlPushNotificationHandler {
+                                override fun onSuccess(registrationResponse: RegistrationResponse?) {
+                                    launchMainActivity()
+                                }
 
-                        override fun onFailure(
-                            registrationResponse: RegistrationResponse?,
-                            exception: java.lang.Exception?
-                        ) {
-                        }
-                    })
-            })
+                                override fun onFailure(
+                                        registrationResponse: RegistrationResponse?,
+                                        exception: java.lang.Exception?
+                                ) {
+                                }
+                            })
+                })
     }
 
     fun launchMainActivity() {
         val intent = Intent(
-            this, MainActivity::class.java
+                this, MainActivity::class.java
         )
         this.startActivity(intent)
         this.finish()
